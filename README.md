@@ -6,8 +6,6 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 ## Flix Part 1
 
 ### User Stories
-`TODO://` In the **User Stories section below**, add an `x` in the `-[ ]` like this `- [x]` for any user story you complete. (🚫 Remove this paragraph after checking off completed user stories)
-
 #### REQUIRED (10pts)
 - [x] (2pts) User sees an app icon on the home screen and a styled launch screen.
 - [x] (5pts) User can view and scroll through a list of movies now playing in theaters.
@@ -18,7 +16,8 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 - [ ] (1pt) Run your app on a real device.
 
 ### App Walkthrough GIF
-<img src="http://g.recordit.co/F6qOnbiD1Y.gif" width=250><br>
+
+<img src="http://g.recordit.co/pABFJefOM5.gif" width=250><br>
 
 ### Notes
 Fairly simple enough to do this app. Challenges were mostly with refamiliarizing myself with Swift/Xcode again. I also encountered some trouble using cocoapods to install the AlamofireImage lib but it was nothing a Google search couldn't fix.
