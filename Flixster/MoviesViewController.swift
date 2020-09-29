@@ -67,8 +67,20 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         cell.posterView.af_setImage(withURL: posterUrl!)
         
+       // cell.backgroundColor = UIColor(red: 0.2 * CGFloat(indexPath.row), green: 0, blue: 0, alpha: 1)
         
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Find selected movie
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)!
+        let movie = movies[indexPath.row];
+        
+        // Pass the selected movie to the details view controller
+        let detailsViewController = segue.destination as! MovieDetailsViewController
+        detailsViewController.movie = movie
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
