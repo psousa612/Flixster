@@ -13,12 +13,14 @@ class MovieGridViewController: UIViewController, UICollectionViewDataSource, UIC
     @IBOutlet weak var collectionView: UICollectionView!
     var movies = [[String:Any]]()
     var similarID : Int = 297762
-
+    @IBOutlet weak var emptyLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.delegate = self
         collectionView.dataSource = self
+
         
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumLineSpacing = 1
@@ -31,7 +33,7 @@ class MovieGridViewController: UIViewController, UICollectionViewDataSource, UIC
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         
-        let task = session.dataTask(with: request) { (data, response, error) in
+        let task = session.dataTask(with: request) { [self] (data, response, error) in
            // This will run when the network request returns
             if let error = error {
               print(error.localizedDescription)
@@ -39,7 +41,16 @@ class MovieGridViewController: UIViewController, UICollectionViewDataSource, UIC
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                 
                 self.movies = dataDictionary["results"] as! [[String:Any]]
+                
                 self.collectionView.reloadData()
+                
+                if(movies.isEmpty) {
+                    emptyLabel.isHidden = false
+                    
+                } else {
+                    emptyLabel.isHidden = true
+                }
+                
            }
         }
         

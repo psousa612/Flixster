@@ -21,9 +21,6 @@ class MovieDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(movie["id"] as! Int)
-        print("pog")
-        
         getSimilarButton.layer.cornerRadius = 4
         
         titleLabel.text = movie["title"] as? String
@@ -46,6 +43,7 @@ class MovieDetailsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let gridViewController = segue.destination as! MovieGridViewController
         gridViewController.similarID = movie["id"] as! Int
+        gridViewController.title = "Movies Like: \(movie["title"] as! String)"
         
     }
 
